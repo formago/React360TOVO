@@ -1,0 +1,61 @@
+// This file contains the boilerplate to execute your React app.
+// If you want to modify your application's content, start in "index.js"
+
+import {
+  ReactInstance,
+  Surface,
+  Location,
+  Module,
+  Environment
+} from "react-360-web";
+
+function init(bundle, parent, options = {}) {
+  const r360 = new ReactInstance(bundle, parent, {
+    // Add custom options here
+    fullScreen: true,
+    nativeModules: [new videoModule()],
+    ...options
+  });
+
+  // Render your app content to the default cylinder surface
+  // const Surface1 = new Surface(1000, 600, Surface.SurfaceShape.Flat);
+  // Surface1.setAngle(0, 0);
+  // r360.renderToSurface(r360.createRoot("V2020"), Surface1);
+
+  r360.renderToSurface(r360.createRoot("V2020", {}), r360.getDefaultSurface());
+
+  const Surface2 = new Surface(500, 600, Surface.SurfaceShape.Flat);
+  Surface2.setAngle(1.1, 0);
+  r360.renderToSurface(r360.createRoot("ChooseTheme"), Surface2);
+
+  const Surface3 = new Surface(500, 600, Surface.SurfaceShape.Flat);
+  Surface3.setAngle(-0.8, 0);
+  r360.renderToSurface(r360.createRoot("CallerConversation"), Surface3);
+
+  player = r360.compositor.createVideoPlayer("myplayer");
+  player.setSource("/static_assets/Vid1.mp4", "2D");
+  player.setLoop(true);
+  player.setMuted(false);
+  //r360.start();
+  //r360.compositor.setBackgroundVideo("myplayer");
+
+  // Load the initial environment
+  r360.compositor.setBackground(r360.getAssetURL("hawaii_beach.jpg"));
+}
+
+window.React360 = { init };
+
+class videoModule extends Module {
+  constructor() {
+    super("videoModule");
+  }
+
+  muteAudio(themeSelected) {
+    if (themeSelected == "video") {
+      player.setMuted(false);
+    } else {
+      player.setMuted(true);
+      //player.destroy();
+    }
+  }
+}
