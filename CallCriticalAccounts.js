@@ -17,7 +17,10 @@ import AnimatedPulse from "./AnimatedPulse";
 import AnimateNumber from "./AnimateNumber";
 import BarGraph from "./BarGraph";
 import TypeWriter from "./TypeWriter";
+import CallerConversation from "./CallerConversation";
 const { AudioModule } = NativeModules;
+const surfaceModule = NativeModules.surfaceModule;
+import { Surface } from "react-360-web";
 const DELAY = 500;
 export default class CallCriticalAccounts extends React.Component {
   constructor(props) {
@@ -78,7 +81,8 @@ export default class CallCriticalAccounts extends React.Component {
       openAmt9: 0,
 
       FredaConvo: "",
-      MelissaConvo: ""
+      MelissaConvo: "",
+      showCallerConvo: false
     };
   }
 
@@ -130,15 +134,16 @@ export default class CallCriticalAccounts extends React.Component {
       that.setState({
         MelissaConvo: "Alright! Lets call Keith.."
       });
-    }, 45000);
+    }, 42000);
 
     setTimeout(function() {
       that.setState({
         FredaConvo: "Sure..I will standby to take notes."
       });
-    }, 47000);
+    }, 44000);
   }
   startVoice() {
+    let that = this;
     AudioModule.playOneShot({
       source: asset("/Voices/speech_20181112103608127.mp3")
     });
@@ -174,10 +179,33 @@ export default class CallCriticalAccounts extends React.Component {
       });
     }, 44500);
     setTimeout(function() {
-      this.inCallAnim();
+      that.inCallAnim();
     }, 46500);
+    setTimeout(function() {
+      that.setState({
+        MelissaConvo:
+          "Hi Keith! This is Melissa from Pentacorp.When would you be able to get them paid?"
+      });
+    }, 55000);
+    setTimeout(function() {
+      that.setState({
+        MelissaConvo:
+          "Sure..sounds great! Thanks for your business.Have a nice day!"
+      });
+    }, 66000);
+    setTimeout(function() {
+      this.callDisconnected();
+    }, 68000);
   }
-
+  callDisconnected() {
+    this.animatedValueInCall.setValue(1);
+    Animated.timing(this.animatedValueInCall, {
+      toValue: 0,
+      duration: 1500,
+      //delay: 8500,
+      easing: Easing.ease
+    }).start();
+  }
   activeCall() {
     Animated.parallel([
       Animated.timing(this.animatedValue3, {
@@ -197,6 +225,9 @@ export default class CallCriticalAccounts extends React.Component {
       })
     ]).start();
   }
+  resizeTest() {
+    surfaceModule.resizeSurf(1000, 600);
+  }
   inCallAnim() {
     console.log("In call:::::::::::::::::");
     this.animatedValueInCall.setValue(0);
@@ -206,6 +237,10 @@ export default class CallCriticalAccounts extends React.Component {
       //delay: 8500,
       easing: Easing.ease
     }).start(() => this.inCallAnim());
+
+    this.setState({
+      showCallerConvo: true
+    });
   }
   startAnimation() {
     Animated.spring(this.springValue1, {
@@ -435,6 +470,7 @@ export default class CallCriticalAccounts extends React.Component {
       inputRange: [0, 0.5, 1],
       outputRange: [0, 0, 1]
     });
+
     return (
       <View style={styles.panel}>
         <Animated.View style={this.getStyle(this.state.anim1)}>
@@ -442,8 +478,7 @@ export default class CallCriticalAccounts extends React.Component {
             <Image
               style={styles.profilePic}
               source={{
-                uri:
-                  "/static_assets/Madison-Iseman-awesome-dp-profile-pics-MyWhatsappImages.com-1044.jpg"
+                uri: "/static_assets/assets/Call-critical.png"
               }}
             />
             <View>
@@ -470,8 +505,7 @@ export default class CallCriticalAccounts extends React.Component {
             <Image
               style={styles.profilePic}
               source={{
-                uri:
-                  "/static_assets/Madison-Iseman-awesome-dp-profile-pics-MyWhatsappImages.com-1044.jpg"
+                uri: "/static_assets/assets/Freda.png"
               }}
             />
             <View>
@@ -498,8 +532,7 @@ export default class CallCriticalAccounts extends React.Component {
             <Image
               style={styles.profilePic}
               source={{
-                uri:
-                  "/static_assets/Madison-Iseman-awesome-dp-profile-pics-MyWhatsappImages.com-1044.jpg"
+                uri: "/static_assets/assets/Melissa_small.png"
               }}
             />
             <View>
@@ -1382,8 +1415,8 @@ const styles = StyleSheet.create({
     width: 1000,
     height: 600,
     flexDirection: "row",
-    backgroundColor: "black",
-    //  backgroundColor: "rgba(255, 255, 255, 0.4)",
+    //backgroundColor: "black",
+    backgroundColor: "rgba(0, 0, 0,0.9)",
     justifyContent: "center",
     alignItems: "center"
   },
@@ -1449,7 +1482,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: 100,
     height: 100,
-    backgroundColor: "#fff",
+    backgroundColor: "black",
     borderRadius: 100
   },
   verticalSeperatorInPanel: {

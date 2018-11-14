@@ -181,8 +181,7 @@ export default class RecognizeUser extends React.Component {
           <Image
             style={styles.profilePic}
             source={{
-              uri:
-                "/static_assets/Madison-Iseman-awesome-dp-profile-pics-MyWhatsappImages.com-1044.jpg"
+              uri: "/static_assets/assets/Melissa_small.png"
             }}
           />
         </Animated.View>
@@ -212,8 +211,8 @@ const styles = StyleSheet.create({
     width: 1000,
     height: 600,
     flexDirection: "row",
-    backgroundColor: "black",
-    //  backgroundColor: "rgba(255, 255, 255, 0.4)",
+    //  backgroundColor: "black",
+    backgroundColor: "rgba(0, 0, 0,0.9)",
     justifyContent: "center",
     alignItems: "center"
   },
@@ -235,7 +234,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: 170,
     height: 190,
-    backgroundColor: "#fff",
+    backgroundColor: "black",
     borderRadius: 100
   },
   verticalSeperator: {

@@ -49,8 +49,12 @@ export default class ChooseTheme extends React.Component {
     if (number === 1) {
       Environment.setBackgroundImage(asset("sunrise_paris_2.jpg"));
       //  vidModule.muteAudio("image");
+      Environment.setBackgroundVideo("myplayer3");
+      VideoModule.resume("myplayer3");
     } else if (number === 2) {
-      Environment.setBackgroundImage(asset("homebase.png"));
+      //  Environment.setBackgroundImage(asset("homebase.png"));
+      Environment.setBackgroundVideo("myplayer1");
+      VideoModule.resume("myplayer1");
       //  vidModule.muteAudio("image");
     } else if (number === 3) {
       //Environment.setBackgroundImage(asset("horseshoe_bend.jpg"));
@@ -79,7 +83,7 @@ export default class ChooseTheme extends React.Component {
             style={{
               width: 227,
               height: 200,
-              backgroundColor: "violet",
+              backgroundColor: "#607d8b",
               justifyContent: "center",
               alignItems: "center"
             }}
@@ -106,7 +110,7 @@ export default class ChooseTheme extends React.Component {
             style={{
               width: 227,
               height: 200,
-              backgroundColor: "blue",
+              backgroundColor: "#90a4ae",
               justifyContent: "center",
               alignItems: "center"
             }}
@@ -133,7 +137,7 @@ export default class ChooseTheme extends React.Component {
             style={{
               width: 227,
               height: 200,
-              backgroundColor: "green",
+              backgroundColor: "#cfd8dc",
               justifyContent: "center",
               alignItems: "center"
             }}

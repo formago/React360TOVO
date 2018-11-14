@@ -169,7 +169,7 @@ export default class Collections extends React.Component {
         position: "absolute",
         top: 200,
         left: 350,
-        height: 400,
+        height: 200,
         width: 300,
         backgroundColor: "black",
         // justifyContent: "center",
@@ -186,7 +186,7 @@ export default class Collections extends React.Component {
         position: "absolute",
         top: 200,
         left: 350,
-        height: 400,
+        height: 200,
         width: 300,
         backgroundColor: "black"
         // justifyContent: "center",
@@ -201,8 +201,8 @@ export default class Collections extends React.Component {
         position: "absolute",
         top: 200,
         left: 400,
-        height: 400,
-        width: 300,
+        height: 100,
+        width: 220,
         backgroundColor: "black",
         // justifyContent: "center",
         // alignItems: "center",
@@ -218,8 +218,8 @@ export default class Collections extends React.Component {
         position: "absolute",
         top: 200,
         left: 400,
-        height: 400,
-        width: 300,
+        height: 100,
+        width: 220,
         backgroundColor: "black"
 
         // justifyContent: "center",
@@ -246,8 +246,7 @@ export default class Collections extends React.Component {
             <Image
               style={styles.profilePic}
               source={{
-                uri:
-                  "/static_assets/Madison-Iseman-awesome-dp-profile-pics-MyWhatsappImages.com-1044.jpg"
+                uri: "/static_assets/assets/Freda.png"
               }}
             />
             <View
@@ -267,7 +266,7 @@ export default class Collections extends React.Component {
           style={{
             position: "absolute",
             top: -120,
-            left: 700,
+            left: 630,
             marginTop: movingMarginAmount
           }}
         >
@@ -295,22 +294,22 @@ export default class Collections extends React.Component {
         </Animated.View>
         <Animated.View
           style={{
-            width: 200,
-            height: 200,
+            width: 250,
+            height: 450,
             transform: [{ scale: this.springValue3 }],
             position: "absolute",
             top: 100,
             left: 300,
             justifyContent: "space-between",
+            backgroundColor: "black",
             alignItems: "center"
           }}
         >
           <Text style={styles.greeting}>$1.5 million</Text>
           <Image
-            style={styles.profilePic}
+            style={styles.collectionsIcons}
             source={{
-              uri:
-                "/static_assets/Madison-Iseman-awesome-dp-profile-pics-MyWhatsappImages.com-1044.jpg"
+              uri: "/static_assets/assets/Call-critical.png"
             }}
           />
           <VrButton
@@ -325,22 +324,22 @@ export default class Collections extends React.Component {
 
         <Animated.View
           style={{
-            width: 200,
-            height: 200,
+            width: 250,
+            height: 450,
             transform: [{ scale: this.springValue4 }],
             position: "absolute",
             top: 100,
             left: 550,
             justifyContent: "space-between",
+            backgroundColor: "black",
             alignItems: "center"
           }}
         >
           <Text style={styles.greeting}>$1.5 million</Text>
           <Image
-            style={styles.profilePic}
+            style={styles.collectionsIcons}
             source={{
-              uri:
-                "/static_assets/Madison-Iseman-awesome-dp-profile-pics-MyWhatsappImages.com-1044.jpg"
+              uri: "/static_assets/assets/Execute-email.png"
             }}
           />
           <VrButton style={styles.greetingBox}>
@@ -351,22 +350,22 @@ export default class Collections extends React.Component {
         </Animated.View>
         <Animated.View
           style={{
-            width: 200,
-            height: 200,
+            width: 230,
+            height: 450,
             transform: [{ scale: this.springValue5 }],
             position: "absolute",
             top: 100,
             left: 800,
             justifyContent: "space-between",
+            backgroundColor: "black",
             alignItems: "center"
           }}
         >
           <Text style={styles.greeting}>$1.5 million</Text>
           <Image
-            style={styles.profilePic}
+            style={styles.collectionsIcons}
             source={{
-              uri:
-                "/static_assets/Madison-Iseman-awesome-dp-profile-pics-MyWhatsappImages.com-1044.jpg"
+              uri: "/static_assets/assets/Review-email.png"
             }}
           />
           <VrButton style={styles.greetingBox}>
@@ -398,13 +397,13 @@ const styles = StyleSheet.create({
     width: 1000,
     height: 600,
     flexDirection: "row",
-    backgroundColor: "black",
-    //  backgroundColor: "rgba(255, 255, 255, 0.4)",
+    //backgroundColor: "black",
+    backgroundColor: "rgba(0, 0, 0,0.9)",
     justifyContent: "center",
     alignItems: "center"
   },
   greetingBox: {
-    padding: 20,
+    padding: 5,
     backgroundColor: "#000000",
     borderColor: "#639dda",
     borderWidth: 2
@@ -419,7 +418,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: 100,
     height: 100,
-    backgroundColor: "#fff",
+    backgroundColor: "black",
+    borderRadius: 100
+  },
+  collectionsIcons: {
+    borderWidth: 1,
+    borderColor: "rgba(0,0,0,0.2)",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 150,
+    height: 200,
+    backgroundColor: "black",
     borderRadius: 100
   },
   verticalSeperator: {

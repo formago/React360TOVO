@@ -29,7 +29,7 @@ export default class CallerConversation extends React.Component {
   }
 
   componentDidMount() {
-    // this.start();
+    this.start();
     // this.startVoice();
     // this.startText();
   }
@@ -86,7 +86,7 @@ export default class CallerConversation extends React.Component {
       Animated.timing(this.animatedValue, {
         toValue: 1,
         duration: 2000,
-        //delay: 8500,
+        delay: 105000,
         easing: Easing.ease
       }),
       Animated.spring(this.springVal1, {
@@ -94,14 +94,13 @@ export default class CallerConversation extends React.Component {
         friction: 5,
         tension: 5
       })
-      // Animated.spring(this.springVal2, {
-      //   toValue: 1,
-      //   friction: 5,
-      //   tension: 5
-      // })
-    ]).start();
+    ]).start(() => this.test());
   }
 
+  test() {
+    this.startVoice();
+    this.startText();
+  }
   render() {
     const opacity = this.animatedValue.interpolate({
       inputRange: [0, 0.5, 1],
@@ -125,8 +124,7 @@ export default class CallerConversation extends React.Component {
             <Image
               style={styles.profilePic}
               source={{
-                uri:
-                  "/static_assets/Madison-Iseman-awesome-dp-profile-pics-MyWhatsappImages.com-1044.jpg"
+                uri: "/static_assets/assets/Keith.png"
               }}
             />
             <View>
@@ -186,8 +184,8 @@ const styles = StyleSheet.create({
     // Fill the entire surface
     width: 300,
     height: 600,
-    backgroundColor: "black",
-    //  backgroundColor: "rgba(255, 255, 255, 0.4)",
+    //  backgroundColor: "black",
+    backgroundColor: "rgba(0, 0, 0,0.9)",
     justifyContent: "center",
     alignItems: "center"
   },
@@ -223,7 +221,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: 100,
     height: 100,
-    backgroundColor: "#fff",
+    backgroundColor: "black",
     borderRadius: 100,
     marginLeft: 10
   },

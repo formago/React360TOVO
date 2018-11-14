@@ -13,7 +13,7 @@ function init(bundle, parent, options = {}) {
   const r360 = new ReactInstance(bundle, parent, {
     // Add custom options here
     fullScreen: true,
-    nativeModules: [new videoModule()],
+    nativeModules: [new videoModule(), new surfaceModule()],
     ...options
   });
 
@@ -28,16 +28,32 @@ function init(bundle, parent, options = {}) {
   Surface2.setAngle(1.1, 0);
   r360.renderToSurface(r360.createRoot("ChooseTheme"), Surface2);
 
-  const Surface3 = new Surface(500, 600, Surface.SurfaceShape.Flat);
+  Surface3 = new Surface(500, 600, Surface.SurfaceShape.Flat);
   Surface3.setAngle(-0.8, 0);
   r360.renderToSurface(r360.createRoot("CallerConversation"), Surface3);
 
   player = r360.compositor.createVideoPlayer("myplayer");
-  player.setSource("/static_assets/Vid1.mp4", "2D");
+  player.setSource("/static_assets/Vid4.mp4", "2D");
   player.setLoop(true);
   player.setMuted(false);
-  //r360.start();
-  //r360.compositor.setBackgroundVideo("myplayer");
+
+  player1 = r360.compositor.createVideoPlayer("myplayer1");
+  player1.setSource("/static_assets/Vid5.mp4", "2D");
+  player1.setLoop(true);
+  player1.setMuted(false);
+
+  player2 = r360.compositor.createVideoPlayer("myplayer2");
+  player2.setSource("/static_assets/Vid6.mp4", "2D");
+  player2.setLoop(true);
+  player2.setMuted(false);
+
+  player3 = r360.compositor.createVideoPlayer("myplayer3");
+  player3.setSource("/static_assets/Vid7.mp4", "2D");
+  player3.setLoop(true);
+  player3.setMuted(false);
+
+  // r360.compositor.setBackgroundVideo("myplayer");
+  // r360.start();
 
   // Load the initial environment
   r360.compositor.setBackground(r360.getAssetURL("hawaii_beach.jpg"));
@@ -58,4 +74,19 @@ class videoModule extends Module {
       //player.destroy();
     }
   }
+}
+
+class surfaceModule extends Module {
+  constructor() {
+    super("surfaceModule");
+  }
+  resizeSurf(width, height) {
+    Surface3.resize(500, 600);
+    Surface3.setAngle(-0.8, 0);
+  }
+  // changeSurf(Type) {
+  //   Type === "Flat"
+  //     ? Surface2.setShape(Surface.SurfaceShape.Flat)
+  //     : Surface2.setShape(Surface.SurfaceShape.Cylinder);
+  // }
 }

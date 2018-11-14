@@ -288,8 +288,7 @@ export default class WelcomeByFreda extends React.Component {
           <Image
             style={styles.profilePic}
             source={{
-              uri:
-                "/static_assets/Madison-Iseman-awesome-dp-profile-pics-MyWhatsappImages.com-1044.jpg"
+              uri: "/static_assets/assets/Melissa_small.png"
             }}
           />
           <View style={styles.greetingBox}>
@@ -313,8 +312,7 @@ export default class WelcomeByFreda extends React.Component {
             <Image
               style={styles.fredaPic}
               source={{
-                uri:
-                  "/static_assets/Madison-Iseman-awesome-dp-profile-pics-MyWhatsappImages.com-1044.jpg"
+                uri: "/static_assets/assets/Freda.png"
               }}
             />
             <Text style={styles.textFreda}>Freda</Text>
@@ -380,8 +378,7 @@ export default class WelcomeByFreda extends React.Component {
             <Image
               style={styles.fredaPic}
               source={{
-                uri:
-                  "/static_assets/Madison-Iseman-awesome-dp-profile-pics-MyWhatsappImages.com-1044.jpg"
+                uri: "/static_assets/assets/Freda.png"
               }}
             />
             <Text style={styles.textFreda}>Freda</Text>
@@ -489,7 +486,7 @@ const styles = StyleSheet.create({
     height: 600,
     flexDirection: "row",
     //  backgroundColor: "black",
-    backgroundColor: "rgba(255, 255, 255, 0.4)",
+    backgroundColor: "rgba(0, 0, 0,0.9)",
     justifyContent: "center",
     alignItems: "center"
   },
@@ -528,7 +525,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: 100,
     height: 100,
-    backgroundColor: "#fff",
+    backgroundColor: "black",
     borderRadius: 100
   },
   fredaPic: {
